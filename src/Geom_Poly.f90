@@ -573,8 +573,10 @@ ELEMENTAL FUNCTION getRadius_PolygonType(thisPoly) RESULT(r)
   CLASS(PolygonType),INTENT(IN) :: thisPoly
   REAL(SRK) :: r
   r=0.0_SRK
-  IF(thisPoly%isInit .AND. SIZE(thisPoly%quadEdge,2) > 0) THEN
-    r=MERGE(thisPoly%quadEdge(3,1),0.0_SRK,thisPoly%isSection())
+  IF (thisPoly%isInit) THEN
+    IF(SIZE(thisPoly%quadEdge,2) > 0) THEN
+      r=MERGE(thisPoly%quadEdge(3,1),0.0_SRK,thisPoly%isSection())
+    ENDIF
   ENDIF
 ENDFUNCTION getRadius_PolygonType
 !

@@ -1585,7 +1585,6 @@ SUBROUTINE combine_GraphType(this,g)
       ELSE
         direction=1
       ENDIF
-      DEALLOCATE(vTheta)
       edge_endpoint_i1=source_i1
       DO WHILE(edge_endpoint_i1 /= source_i2)
         edge_endpoint_i2=edge_endpoint_i1+direction
@@ -1606,7 +1605,7 @@ SUBROUTINE combine_GraphType(this,g)
           edge_endpoint_i1=1
         ENDIF
       ENDDO
-
+      DEALLOCATE(vTheta)
       DEALLOCATE(intersection_indexes)
     ENDSELECT
 
